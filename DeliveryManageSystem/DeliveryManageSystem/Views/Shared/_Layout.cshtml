@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Delivery Manage System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Home/Index">
+                    <img width=25 height=25 src="~/Images/sto.png" />
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--@Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                    <li>@Html.ActionLink("关于", "About", "Home")</li>
+                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                    <li id="STOProduct" class="dropdown">
+                        <a id="STOProductDrop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            STOProduct表单
+                            <span class="caret"></span>
+                        </a>
+                        <ul id="STOProductMenu" class="dropdown-menu" aria-labelledby="STOProductDrop">
+                            <li id="STOProduct">@Html.ActionLink("STOProduct表单浏览", "Index", "STOProducts")</li>
+                            <li id="STOProductSearch">@Html.ActionLink("STOProduct表单查询", "Index", "STOProductsSearch")</li>
+                        </ul>
+                    </li>
+                    <li id="STOOrder" class="dropdown">
+                        <a id="STOOrderDrop" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            STOOrder表单
+                            <span class="caret"></span>
+                        </a>
+                        <ul id="STOOrderMenu" class="dropdown-menu" aria-labelledby="STOOrderDrop">
+                            <li id="STOOrder">@Html.ActionLink("STOOrder表单浏览", "Index", "STOOrders")</li>
+                            <li id="STOOrderSearch">@Html.ActionLink("STOOrder表单查询", "Index", "STOOrdersSearch")</li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--把是否经过验证的结果保存下来用于前端校验-->
+                <ul id="IsAuthenticated" hidden>@Request.IsAuthenticated</ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Date - Delivery Manage System</p>
+        </footer>
+        
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" src="~/Scripts/Js/_Layout.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<DeliveryManageSystem.Models.STOProduct>
+
+<div id="BarCodeSearchResults">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CommodityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BarCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommodityNameCN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommodityNameJP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecificationCN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IngredientCN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IngredientJP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetWt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrossWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetWeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ULR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginCN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginJP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Factory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandCN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandJP)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommodityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BarCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommodityNameCN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommodityNameJP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecificationCN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IngredientCN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IngredientJP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetWt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrossWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NetWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ULR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OriginCN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OriginJP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Factory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandCN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandJP)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

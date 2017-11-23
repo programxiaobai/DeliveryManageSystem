@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DeliveryManageSystem.Models.STOOrder>
+
+@{
+    ViewBag.Title = "STOOrder查询";
+}
+
+<h2>STOOrder查询</h2>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">按已备案商品管理编码查询&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("重新查询", "Index")</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("RecordedCommodityIdSearch", "STOOrdersSearch",
+                new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "GET",
+                    OnFailure = "RecordedCommodityIdSearchFailed",
+                    LoadingElementId = "ajax-loader",
+                    UpdateTargetId = "RecordedCommodityIdSearchResults",
+                }))
+        {
+            <input type="text" name="q" data-autocomplete-source="@Url.Action("RecordedCommodityIdQuickSearch", "STOOrdersSearch")" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader" src="@Url.Content("Images/process.gif")" style="display:none" />
+        }
+        <p></p>
+        <div id="RecordedCommodityIdSearchResults"></div>
+    </div>
+</div> 
+
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            @*if(@User.IsInRole("User") == "True"){
+                $("#STOOrderSearch").hide();
+            }*@
+
+            $("input[data-autocomplete-source]").each(function () {
+                var target = $(this);
+
+                //var hash = {};
+                //for (var i = 0; i < target.length() ; i++)
+                //{
+                //    (hash[target[i]] == undefined) && hash[target[i]["value"]] == target[i]["value"]);
+                //}
+                //$(this) = hash;
+                target.autocomplete({
+                    source: target.attr("data-autocomplete-source")
+                });
+            });
+        });
+
+        function RecordedCommodityIdSearchFailed() {
+            $("#RecordedCommodityIdSearchFailed").html("搜索有问题，请换另一种方式进行");
+        }
+    </script>
+ }
+
+

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DeliveryManageSystem.Models.STOProduct>
+
+@{
+    ViewBag.Title = "STOProducts查询";
+}
+
+<h2>STOProducts查询</h2>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">按商品条形码查询&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("重新查询", "Index")</div>
+    <div class="panel-body">
+        @using (Ajax.BeginForm("BarCodeSearch", "STOProductsSearch",
+                    new AjaxOptions
+                    {
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "GET",
+                        OnFailure = "BarCodeSearchFailed",
+                        LoadingElementId = "ajax-loader1",
+                        UpdateTargetId = "BarCodeSearchResults",
+                    }))
+        {
+            <input type="text" name="BarCodeSearch" data-autocomplete-source="@Url.Action("BarCodeQuickSearch", "STOProductsSearch")" />
+            <input type="submit" value="search" />
+            <img id="ajax-loader1" src="@Url.Content("Images/process.gif")" style="display:none" />
+        }
+        <p></p>
+        <div id="BarCodeSearchResults"></div>
+    </div>
+</div> 
+
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            @*if(@User.IsInRole("User") == "True"){
+                $("#STOOrderSearch").hide();
+            }*@
+
+            $("input[data-autocomplete-source]").each(function () {
+                var target = $(this);
+
+                //var hash = {};
+                //for (var i = 0; i < target.length() ; i++)
+                //{
+                //    (hash[target[i]] == undefined) && hash[target[i]["value"]] == target[i]["value"]);
+                //}
+                //$(this) = hash;
+                target.autocomplete({
+                    source: target.attr("data-autocomplete-source")
+                });
+            });
+        });
+
+        function BarCodeSearchFailed() {
+            $("#BarCodeSearchFailed").html("搜索有问题，请换另一种方式进行");
+        }
+    </script>
+}

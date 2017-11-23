@@ -1,0 +1,154 @@
+﻿@model DeliveryManageSystem.Models.STOProduct
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>STOProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BarCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BarCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityNameCN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityNameCN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityNameJP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityNameJP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecificationCN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecificationCN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientCN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngredientCN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IngredientJP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IngredientJP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetWt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetWt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrossWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrossWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ULR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ULR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginCN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginCN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginJP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginJP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Factory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Factory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandCN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandCN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandJP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandJP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.STOProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
