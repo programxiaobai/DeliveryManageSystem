@@ -23,6 +23,12 @@ namespace DeliveryManageSystem.Models
             // 在此处添加自定义用户声明
             return userIdentity;
         }
+        //注册时添加用户名选项
+        public string Name { get; set; }
+
+        //添加用户权限
+        public int UserRole { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

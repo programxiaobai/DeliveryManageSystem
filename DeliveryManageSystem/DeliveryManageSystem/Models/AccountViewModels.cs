@@ -50,7 +50,6 @@ namespace DeliveryManageSystem.Models
     {
         [Required]
         [Display(Name = "电子邮件")]
-        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -65,9 +64,9 @@ namespace DeliveryManageSystem.Models
     public class RegisterViewModel
     {
         ////注册时添加用户名选项
-        //[Required]
-        //[Display(Name = "UserName")]
-        //public string UserName { get; set; }
+        [Required]
+        [Display(Name = "UserName")]
+        public string Name { get; set; }
 
         [Required]
         [EmailAddress]
@@ -80,10 +79,13 @@ namespace DeliveryManageSystem.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "The password does not match the confirmation password")]
         public string ConfirmPassword { get; set; }
+
+        
     }
 
     public class ResetPasswordViewModel

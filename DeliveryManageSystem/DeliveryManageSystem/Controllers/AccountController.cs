@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DeliveryManageSystem.Models;
 using DeliveryManageSystem.AuthorityDefine;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DeliveryManageSystem.Controllers
 {
@@ -77,10 +78,18 @@ namespace DeliveryManageSystem.Controllers
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
             // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
             ////原用户名与邮箱名一致，现重新修改
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    //获取当前用户名并传递给页面
+                    //var currentUseId = User.Identity.GetUserId();
+                    //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                    //var currentUser = manager.FindById(currentUseId);
+                    //ViewBag.currentUserName = currentUser.Name;
+
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -153,9 +162,12 @@ namespace DeliveryManageSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                ////参数与RegisterModel有关
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                /////////////////////////////////////参数与RegisterModel有关
+                ////UserName默认为主键(在没有Id时)，只能为注册时使用的？！
+                var user = new ApplicationUser { UserName = model.Email, Name = model.Name, Email = model.Email};
+                //user.Name = model.Name;
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
 
                 ////注册时添加权限
                 //if (result.Succeeded)
