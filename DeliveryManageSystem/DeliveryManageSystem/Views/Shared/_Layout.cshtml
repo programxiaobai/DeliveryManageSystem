@@ -53,6 +53,7 @@
                 </ul>
                 <!--把是否经过验证的结果保存下来用于前端校验-->
                 <ul id="IsAuthenticated" hidden>@Request.IsAuthenticated</ul>
+                <ul id="Role" hidden>"@User.IsInRole("User")"</ul>
 
                 @Html.Partial("_LoginPartial")
             </div>
@@ -72,6 +73,14 @@
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript" src="~/Scripts/Js/_Layout.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ("@User.IsInRole("User")" == "True") {
+                $("#STOProductSearch").hide();
+                $("#STOOrderSearch").hide();
+            }
+        })
+    </script>
 
 </body>
 </html>

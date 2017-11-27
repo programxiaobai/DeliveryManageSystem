@@ -5,4 +5,12 @@
         $("#STOProduct").hide();
         $("#STOOrder").hide();
     }
+
+    if (IsAuthenticated === "True") {
+        var role = $("#Role").text();
+        if (role === "True") {
+            $("#STOProductSearch").hide();
+            $("#STOOrderSearch").hide();
+        }        
+    }
 });

@@ -167,17 +167,17 @@ namespace DeliveryManageSystem.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Name = model.Name, Email = model.Email};
                 //user.Name = model.Name;
                 var result = await UserManager.CreateAsync(user, model.Password);
-                
+
 
                 ////注册时添加权限
-                //if (result.Succeeded)
-                //{
-                //    ApplicationUser appUser = await UserManager.FindByNameAsync(model.UserName);
-                //    if (!UserManager.IsInRole(user.Id, RoleDefine.User))
-                //    {
-                //        UserManager.AddToRole(user.Id, RoleDefine.User);
-                //    }
-                //}
+                if (result.Succeeded)
+                {
+                    if (!UserManager.IsInRole(user.Id, RoleDefine.User))
+                    {
+                        UserManager.AddToRole(user.Id, RoleDefine.User);
+                        user.UserRole = RoleDefine.User;
+                    }
+                }
 
                 if (result.Succeeded)
                 {

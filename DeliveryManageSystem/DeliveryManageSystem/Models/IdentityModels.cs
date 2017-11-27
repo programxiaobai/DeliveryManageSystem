@@ -27,7 +27,7 @@ namespace DeliveryManageSystem.Models
         public string Name { get; set; }
 
         //添加用户权限
-        public int UserRole { get; set; }
+        public string UserRole { get; set; }
 
     }
 
@@ -76,8 +76,8 @@ namespace DeliveryManageSystem.Models
             {
                 roleMgr.Create(new IdentityRole(RoleDefine.User));
             }
-            this.AddUser(userMgr, "sbo8711@outlook.com", "SuperUser", "sbo8711@outlook.com", SuperUserPassword, RoleDefine.SuperUser);
-            this.AddUser(userMgr, "test@163.com", "User", "test@163.com", SuperUserPassword, RoleDefine.User);
+            this.AddUser(userMgr, "sbo8711@outlook.com", "sbo8711@outlook.com", "sbo8711@outlook.com", SuperUserPassword, RoleDefine.SuperUser);
+            this.AddUser(userMgr, "test@163.com", "test@163.com", "test@163.com", SuperUserPassword, RoleDefine.User);
         }
         //属性与RegisterViewModel对应?
         //AddToRole的参数为Id?主键属性是否自动添加？
@@ -88,7 +88,7 @@ namespace DeliveryManageSystem.Models
                 ApplicationUser user = userMgr.FindByName(userName);
                 if(user == null)
                 {
-                    var result = userMgr.Create(new ApplicationUser { Id = id, UserName = userName, Email = email}, password);
+                    var result = userMgr.Create(new ApplicationUser { Id = id, UserName = userName, Email = email, UserRole = roleType}, password);
                     user = userMgr.FindByName(userName);
                 }
                 if (!userMgr.IsInRole(user.Id, roleType))
